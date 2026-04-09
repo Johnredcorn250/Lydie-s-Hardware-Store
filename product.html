@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Lydie's Quincaillerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8832A;
+    --gold-light: #D4A84B;
+    --gold-dark: #8B6520;
+    --bg-main: #FAFAF7;
+    --bg-alt: #F2EDE3;
+    --bg-card: #FFFFFF;
+    --border: #E0D5C3;
+    --text-dark: #1C1108;
+    --text-mid: #4A3F32;
+    --text-light: #7A6A54;
+    --font-display: 'Cormorant Garant', serif;
+    --font-body: 'Raleway', sans-serif;
+
+    /* Category accent colors */
+    --bath-color: #6B8FAB;
+    --bath-bg: #EEF3F7;
+    --elec-color: #C4832A;
+    --elec-bg: #FBF3E8;
+    --build-color: #7A6A54;
+    --build-bg: #F5F0E8;
+    --light-color: #9B7B3A;
+    --light-bg: #FDF7EC;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-main);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
+    background: rgba(250,250,247,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 16px rgba(0,0,0,0.05);
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 70px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.9rem; font-weight: 600;
+    color: var(--text-dark); text-decoration: none; letter-spacing: 1px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none;
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: #fff !important;
+    padding: 0.5rem 1.4rem; border-radius: 2px; font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 4px;
+  }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--text-dark); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; width: 100%;
+    background: var(--bg-card); border-top: 2px solid var(--gold);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 998;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--text-dark); text-decoration: none;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 9rem 2rem 5rem;
+    background: var(--bg-alt);
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,131,42,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,131,42,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .page-hero-inner {
+    max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .page-hero-label {
+    font-family: var(--font-body); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+  }
+  .page-hero-label::before { content: ''; width: 32px; height: 2px; background: var(--gold); }
+  .page-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 600; line-height: 1.05; letter-spacing: 1px;
+    color: var(--text-dark);
+  }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .page-hero-sub {
+    color: var(--text-light); font-size: 1rem; margin-top: 1rem; max-width: 480px;
+  }
+  .breadcrumb {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-body); font-size: 0.8rem; color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { opacity: 0.4; }
+
+  /* ── CATEGORY NAV PILLS ── */
+  .cat-nav {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 70px; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .cat-nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0;
+    padding: 0 2rem;
+    overflow-x: auto;
+  }
+  .cat-nav-inner::-webkit-scrollbar { display: none; }
+  .cat-pill {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 1.1rem 1.5rem;
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none; color: var(--text-light);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .cat-pill:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .cat-pill.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .cat-pill .cat-icon { font-size: 1rem; }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem;
+  }
+  .section-label-small {
+    font-family: var(--font-body); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;
+  }
+  .section-label-small::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600; line-height: 1.1; color: var(--text-dark);
+  }
+  .section-sub { color: var(--text-light); font-size: 0.9rem; max-width: 420px; margin-top: 0.4rem; }
+  .view-all {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border: 1px solid rgba(184,131,42,0.4); padding: 0.5rem 1.2rem; border-radius: 2px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .view-all:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  /* ── FEATURED SECTION ── */
+  #featured { padding: 5rem 2rem; background: var(--bg-main); }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.25rem;
+  }
+
+  /* Hero product card (large) */
+  .feat-card-hero {
+    grid-row: 1 / 3;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .feat-card-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.1); }
+  .feat-card-hero .fc-img {
+    height: 300px; background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7rem; position: relative;
+  }
+  .feat-card-hero .fc-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+  .feat-card-hero .fc-name {
+    font-family: var(--font-display); font-size: 1.7rem; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 0.5rem; line-height: 1.2;
+  }
+  .feat-card-hero .fc-desc { color: var(--text-light); font-size: 0.9rem; line-height: 1.6; flex: 1; }
+  .feat-card-hero .fc-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
+  }
+
+  /* Regular featured card */
+  .feat-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+  .feat-card .fc-img {
+    height: 160px; background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center; font-size: 4rem;
+    position: relative;
+  }
+  .feat-card .fc-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .feat-card .fc-name {
+    font-family: var(--font-body); font-size: 1rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 0.4rem;
+  }
+  .feat-card .fc-desc { color: var(--text-light); font-size: 0.82rem; line-height: 1.6; flex: 1; }
+  .feat-card .fc-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+
+  /* Shared card styles */
+  .fc-badge {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    background: var(--gold); color: #fff;
+    font-family: var(--font-body); font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 1px; padding: 0.2rem 0.65rem;
+    border-radius: 2px; text-transform: uppercase;
+  }
+  .fc-badge.new { background: #3D8B5E; }
+  .fc-badge.sale { background: #B04040; }
+  .fc-cat {
+    font-family: var(--font-body); font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .fc-price {
+    font-family: var(--font-display); font-size: 1.4rem;
+    color: var(--gold); font-weight: 600;
+  }
+  .fc-price-hero { font-size: 2rem; }
+  .btn-enquire {
+    background: transparent; border: 1px solid rgba(184,131,42,0.4);
+    color: var(--gold); font-family: var(--font-body);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+    padding: 0.45rem 1rem; border-radius: 2px; cursor: pointer;
+    transition: all 0.2s; text-transform: uppercase;
+  }
+  .btn-enquire:hover { background: var(--gold); color: #fff; }
+  .btn-enquire-solid {
+    background: var(--gold); color: #fff; border: none;
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 1.5px; padding: 0.7rem 1.5rem; border-radius: 2px;
+    cursor: pointer; transition: background 0.2s; text-transform: uppercase;
+  }
+  .btn-enquire-solid:hover { background: var(--gold-light); }
+
+  /* ── CATEGORY SECTIONS ── */
+  .cat-section { padding: 5rem 2rem; }
+  .cat-section:nth-of-type(even) { background: var(--bg-alt); }
+  .cat-section:nth-of-type(odd) { background: var(--bg-main); }
+
+  /* Category section header band */
+  .cat-band {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.5rem 2rem; border-radius: 8px; margin-bottom: 2.5rem;
+    border: 1px solid;
+  }
+  .cat-band.bath { background: var(--bath-bg); border-color: rgba(107,143,171,0.2); }
+  .cat-band.elec { background: var(--elec-bg); border-color: rgba(196,131,42,0.2); }
+  .cat-band.build { background: var(--build-bg); border-color: rgba(122,106,84,0.2); }
+  .cat-band.light { background: var(--light-bg); border-color: rgba(155,123,58,0.2); }
+  .cat-band-icon { font-size: 2.5rem; }
+  .cat-band-label {
+    font-family: var(--font-body); font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.2rem;
+  }
+  .cat-band.bath .cat-band-label { color: var(--bath-color); }
+  .cat-band.elec .cat-band-label { color: var(--elec-color); }
+  .cat-band.build .cat-band-label { color: var(--build-color); }
+  .cat-band.light .cat-band-label { color: var(--light-color); }
+  .cat-band-title {
+    font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-dark);
+  }
+  .cat-band-sub { color: var(--text-light); font-size: 0.85rem; margin-top: 0.15rem; }
+  .cat-band-count {
+    margin-left: auto;
+    font-family: var(--font-display); font-size: 3rem; font-weight: 600;
+    opacity: 0.12; color: var(--text-dark); white-space: nowrap;
+  }
+
+  /* Products grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .product-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .product-card:hover { transform: translateY(-4px); border-color: var(--gold-light); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .pc-img {
+    height: 160px; background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  /* Category tint on img backgrounds */
+  .pc-img.bath-img { background: var(--bath-bg); }
+  .pc-img.elec-img { background: var(--elec-bg); }
+  .pc-img.build-img { background: var(--build-bg); }
+  .pc-img.light-img { background: var(--light-bg); }
+  .pc-badge {
+    position: absolute; top: 0.6rem; left: 0.6rem;
+    background: var(--gold); color: #fff;
+    font-family: var(--font-body); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 1px; padding: 0.18rem 0.55rem;
+    border-radius: 2px; text-transform: uppercase;
+  }
+  .pc-badge.new { background: #3D8B5E; }
+  .pc-badge.sale { background: #B04040; }
+  .pc-body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
+  .pc-cat {
+    font-family: var(--font-body); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.35rem;
+  }
+  .pc-cat.bath { color: var(--bath-color); }
+  .pc-cat.elec { color: var(--elec-color); }
+  .pc-cat.build { color: var(--build-color); }
+  .pc-cat.light { color: var(--light-color); }
+  .pc-name {
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 0.35rem; line-height: 1.3;
+  }
+  .pc-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+  .pc-footer { display: flex; align-items: center; justify-content: space-between; }
+  .pc-price {
+    font-family: var(--font-display); font-size: 1.35rem;
+    color: var(--gold); font-weight: 600;
+  }
+  .pc-btn {
+    background: transparent; border: 1px solid rgba(184,131,42,0.4);
+    color: var(--gold); font-family: var(--font-body);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+    padding: 0.38rem 0.85rem; border-radius: 2px; cursor: pointer;
+    transition: all 0.2s; text-transform: uppercase;
+  }
+  .pc-btn:hover { background: var(--gold); color: #fff; }
+
+  /* ── PROMO STRIP ── */
+  .promo-strip {
+    background: var(--text-dark); padding: 3rem 2rem;
+    text-align: center;
+  }
+  .promo-strip-inner { max-width: 680px; margin: 0 auto; }
+  .promo-strip p {
+    font-family: var(--font-body); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .promo-strip h2 {
+    font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem);
+    color: #fff; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .promo-strip span { color: var(--gold); font-style: italic; }
+  .promo-strip-sub { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 2rem; }
+  .btn-gold {
+    display: inline-block; background: var(--gold); color: #fff;
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 0.85rem 2.5rem; border-radius: 2px; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark);
+    border-top: 1px solid rgba(184,131,42,0.2);
+    padding: 3rem 2rem 2rem;
+  }
+  .footer-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-logo {
+    font-family: var(--font-display); font-size: 2rem;
+    letter-spacing: 1px; font-weight: 600; color: #fff;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline { color: rgba(255,255,255,0.4); font-size: 0.88rem; margin-top: 0.75rem; max-width: 240px; line-height: 1.6; }
+  .footer-socials { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+  .social-btn {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px; display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; color: rgba(255,255,255,0.4); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col-title {
+    font-family: var(--font-body); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-col ul a { color: rgba(255,255,255,0.4); font-size: 0.875rem; text-decoration: none; transition: color 0.2s; }
+  .footer-col ul a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; padding-top: 2rem;
+  }
+  .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+  .footer-copy span { color: var(--gold); }
+  .footer-legal { display: flex; gap: 1.5rem; }
+  .footer-legal a { color: rgba(255,255,255,0.25); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+  .footer-legal a:hover { color: var(--gold); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── BACK TO TOP ── */
+  #backTop {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px; background: var(--gold); color: #fff;
+    border: none; border-radius: 4px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; z-index: 100;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  #backTop.show { opacity: 1; transform: translateY(0); }
+  #backTop:hover { background: var(--gold-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .featured-grid { grid-template-columns: 1fr 1fr; }
+    .feat-card-hero { grid-row: auto; grid-column: 1 / -1; }
+    .feat-card-hero .fc-img { height: 220px; }
+  }
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .page-hero { padding: 7rem 1.25rem 3.5rem; }
+    .cat-section { padding: 3.5rem 1.25rem; }
+    #featured { padding: 3.5rem 1.25rem; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .feat-card-hero { grid-column: auto; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cat-band-count { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">LYDIE'S <span>QUINCAILLERIE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="index.html#why">About</a></li>
+      <li><a href="index.html#testimonials">Reviews</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#services" onclick="closeMobile()">Services</a>
+  <a href="products.html" onclick="closeMobile()">Products</a>
+  <a href="index.html#why" onclick="closeMobile()">About</a>
+  <a href="index.html#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>Products</span>
+      </div>
+      <div class="page-hero-label">Our Full Catalogue</div>
+      <h1>Everything You Need,<br><em>All in One Place.</em></h1>
+      <p class="page-hero-sub">From bathroom fittings to construction essentials — premium products at fair prices, always in stock.</p>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:var(--font-display);font-size:5rem;font-weight:600;color:rgba(184,131,42,0.12);line-height:1;">500+</div>
+      <div style="font-family:var(--font-body);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);">Products in Stock</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="#featured" class="cat-pill active"><span class="cat-icon">⭐</span> Featured</a>
+    <a href="#bathroom" class="cat-pill"><span class="cat-icon">🚿</span> Bathroom</a>
+    <a href="#electricity" class="cat-pill"><span class="cat-icon">⚡</span> Electricity</a>
+    <a href="#construction" class="cat-pill"><span class="cat-icon">🏗️</span> Construction</a>
+    <a href="#lighting" class="cat-pill"><span class="cat-icon">💡</span> Lighting</a>
+  </div>
+</div>
+
+<!-- ══ FEATURED SECTION ══ -->
+<section id="featured">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label-small">Hand-Picked</div>
+        <div class="section-title">Featured Items</div>
+        <div class="section-sub">Our most popular and recommended products this season.</div>
+      </div>
+    </div>
+
+    <div class="featured-grid">
+
+      <!-- HERO PRODUCT -->
+      <div class="feat-card-hero reveal">
+        <div class="fc-img" style="background: linear-gradient(135deg, #F5F0E8, #EDE4D0);">
+          🔨
+          <div class="fc-badge">Best Seller</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-cat">Power Tools</div>
+          <div class="fc-name">DeWalt 18V Drill & Driver Combo Kit</div>
+          <div class="fc-desc">Professional-grade cordless drill with brushless motor, 2 lithium-ion batteries, fast charger, and heavy-duty carrying case. Up to 3× longer motor life than brushed motors. Ideal for contractors and serious DIY projects.</div>
+          <div class="fc-footer">
+            <div class="fc-price fc-price-hero">RWF 85,000</div>
+            <button class="btn-enquire-solid" onclick="enquire('DeWalt 18V Drill & Driver Combo Kit')">Enquire →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMALL FEATURED CARDS -->
+      <div class="feat-card reveal">
+        <div class="fc-img" style="background: var(--bath-bg);">
+          🚿
+          <div class="fc-badge new">New</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-cat">Bathroom</div>
+          <div class="fc-name">Grohe Rainshower System 310</div>
+          <div class="fc-desc">Premium ceiling-mounted rainfall shower head with integrated arm. Brushed nickel finish.</div>
+          <div class="fc-footer">
+            <div class="fc-price">RWF 145,000</div>
+            <button class="btn-enquire" onclick="enquire('Grohe Rainshower System 310')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="fc-img" style="background: var(--light-bg);">
+          💡
+          <div class="fc-badge">Popular</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-cat">Lighting</div>
+          <div class="fc-name">LED Pendant Cluster — Warm Gold</div>
+          <div class="fc-desc">Adjustable height cluster pendant, 5-bulb, warm white 3000K. Perfect for dining rooms.</div>
+          <div class="fc-footer">
+            <div class="fc-price">RWF 78,000</div>
+            <button class="btn-enquire" onclick="enquire('LED Pendant Cluster — Warm Gold')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="fc-img" style="background: var(--elec-bg);">
+          ⚡
+          <div class="fc-badge new">New</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-cat">Electrical</div>
+          <div class="fc-name">Schneider 6-Way Consumer Unit</div>
+          <div class="fc-desc">DIN-rail mounted distribution board with surge protection and labelled circuits. 63A main.</div>
+          <div class="fc-footer">
+            <div class="fc-price">RWF 32,000</div>
+            <button class="btn-enquire" onclick="enquire('Schneider 6-Way Consumer Unit')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="fc-img" style="background: var(--build-bg);">
+          🧱
+        </div>
+        <div class="fc-body">
+          <div class="fc-cat">Construction</div>
+          <div class="fc-name">Portland Cement 50kg — Cimerwa</div>
+          <div class="fc-desc">High-strength OPC cement for foundations, slabs, and masonry. Locally produced, nationally trusted.</div>
+          <div class="fc-footer">
+            <div class="fc-price">RWF 14,500</div>
+            <button class="btn-enquire" onclick="enquire('Portland Cement 50kg — Cimerwa')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BATHROOM ══ -->
+<section id="bathroom" class="cat-section">
+  <div class="container">
+    <div class="cat-band bath reveal">
+      <div class="cat-band-icon">🚿</div>
+      <div>
+        <div class="cat-band-label">Category</div>
+        <div class="cat-band-title">Bathroom & Plumbing</div>
+        <div class="cat-band-sub">Fittings, fixtures, pipes, and sanitary ware for every budget.</div>
+      </div>
+      <div class="cat-band-count">BATH</div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🛁<div class="pc-badge">Top Pick</div></div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Bathroom</div>
+          <div class="pc-name">Freestanding Acrylic Bathtub 170cm</div>
+          <div class="pc-desc">Oval freestanding tub, gloss white, pre-drilled for floor-mounted tap. 280L capacity.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 680,000</div>
+            <button class="pc-btn" onclick="enquire('Freestanding Acrylic Bathtub 170cm')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🚿</div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Bathroom</div>
+          <div class="pc-name">Thermostatic Shower Valve Set</div>
+          <div class="pc-desc">Concealed thermostatic shower mixer with dual outlets. Chrome finish, anti-scald protection.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 98,000</div>
+            <button class="pc-btn" onclick="enquire('Thermostatic Shower Valve Set')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🪠<div class="pc-badge new">New</div></div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Bathroom</div>
+          <div class="pc-name">Wall-Hung Toilet — Rimless</div>
+          <div class="pc-desc">Ceramic rimless wall-mounted toilet pan with soft-close seat. Easy to clean design.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 185,000</div>
+            <button class="pc-btn" onclick="enquire('Wall-Hung Toilet Rimless')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🪣</div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Plumbing</div>
+          <div class="pc-name">PVC Pressure Pipe Bundle 3/4"</div>
+          <div class="pc-desc">10-pack of Class C pressure-rated PVC pipes for water supply lines. 3m length each.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 22,000</div>
+            <button class="pc-btn" onclick="enquire('PVC Pressure Pipe Bundle 3/4')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🔧</div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Plumbing</div>
+          <div class="pc-name">Basin Mixer Tap — Brushed Nickel</div>
+          <div class="pc-desc">Single-lever basin mixer with pop-up waste. Brushed nickel finish, ceramic cartridge.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 54,000</div>
+            <button class="pc-btn" onclick="enquire('Basin Mixer Tap Brushed Nickel')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🪟</div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Bathroom</div>
+          <div class="pc-name">Frameless Bathroom Mirror 80×60cm</div>
+          <div class="pc-desc">Bevelled edge frameless wall mirror with integrated LED strip and anti-fog pad.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 67,000</div>
+            <button class="pc-btn" onclick="enquire('Frameless Bathroom Mirror')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">🛀<div class="pc-badge sale">Sale</div></div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Bathroom</div>
+          <div class="pc-name">Shower Enclosure — 900×900mm</div>
+          <div class="pc-desc">6mm safety glass sliding door enclosure with chrome frame. Easy to clean coating.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 210,000</div>
+            <button class="pc-btn" onclick="enquire('Shower Enclosure 900x900mm')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img bath-img">💧</div>
+        <div class="pc-body">
+          <div class="pc-cat bath">Plumbing</div>
+          <div class="pc-name">Water Storage Tank 1000L</div>
+          <div class="pc-desc">Roto-moulded food-grade polyethylene tank with lid, inlet and outlet fittings included.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 75,000</div>
+            <button class="pc-btn" onclick="enquire('Water Storage Tank 1000L')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ELECTRICITY ══ -->
+<section id="electricity" class="cat-section">
+  <div class="container">
+    <div class="cat-band elec reveal">
+      <div class="cat-band-icon">⚡</div>
+      <div>
+        <div class="cat-band-label">Category</div>
+        <div class="cat-band-title">Electrical Supplies</div>
+        <div class="cat-band-sub">Cables, breakers, sockets, and switchgear for residential and commercial use.</div>
+      </div>
+      <div class="cat-band-count">ELEC</div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">🔌<div class="pc-badge">Best Seller</div></div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">3-Core Copper Cable 2.5mm² (100m)</div>
+          <div class="pc-desc">Armoured copper cable with UV-resistant outer sheath. Suitable for buried and surface runs.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 38,000</div>
+            <button class="pc-btn" onclick="enquire('3-Core Copper Cable 2.5mm 100m')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">⚡<div class="pc-badge new">New</div></div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">MCB Circuit Breaker 32A — Single Pole</div>
+          <div class="pc-desc">DIN-rail mounted miniature circuit breaker, Type B curve, IEC 60898-1 compliant.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 4,200</div>
+            <button class="pc-btn" onclick="enquire('MCB Circuit Breaker 32A')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">🔋</div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Schneider Easy9 Distribution Board</div>
+          <div class="pc-desc">12-way surface-mount consumer unit with double door and DIN-rail busbar. Surge protected.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 48,000</div>
+            <button class="pc-btn" onclick="enquire('Schneider Easy9 Distribution Board')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">🔌</div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Double USB Socket — White</div>
+          <div class="pc-desc">13A twin socket with dual USB-A charging ports (3.4A total). Flush-mount, screwless cover.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 8,500</div>
+            <button class="pc-btn" onclick="enquire('Double USB Socket White')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">🔧<div class="pc-badge sale">Sale</div></div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Conduit Pipe PVC 25mm (Bundle of 10)</div>
+          <div class="pc-desc">Heavy-duty PVC electrical conduit, 3m length, with connectors included. Impact resistant.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 12,000</div>
+            <button class="pc-btn" onclick="enquire('Conduit Pipe PVC 25mm')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">⚙️</div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Earth Leakage Circuit Breaker 30mA</div>
+          <div class="pc-desc">Residual current device (RCCB), 25A, 30mA sensitivity. Protects against electric shock.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 16,500</div>
+            <button class="pc-btn" onclick="enquire('Earth Leakage Circuit Breaker 30mA')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">📦</div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Junction Box IP65 Weatherproof</div>
+          <div class="pc-desc">Outdoor-rated enclosure with cable glands. Suitable for solar, outdoor lighting, and pumps.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 5,800</div>
+            <button class="pc-btn" onclick="enquire('Junction Box IP65 Weatherproof')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img elec-img">🔑</div>
+        <div class="pc-body">
+          <div class="pc-cat elec">Electrical</div>
+          <div class="pc-name">Smart Dimmer Switch — WiFi</div>
+          <div class="pc-desc">Touch-panel WiFi smart dimmer, compatible with standard LED bulbs. App and voice control.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 24,000</div>
+            <button class="pc-btn" onclick="enquire('Smart Dimmer Switch WiFi')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONSTRUCTION ══ -->
+<section id="construction" class="cat-section">
+  <div class="container">
+    <div class="cat-band build reveal">
+      <div class="cat-band-icon">🏗️</div>
+      <div>
+        <div class="cat-band-label">Category</div>
+        <div class="cat-band-title">Construction Materials</div>
+        <div class="cat-band-sub">Cement, steel, timber, and tools for residential and commercial builds.</div>
+      </div>
+      <div class="cat-band-count">BUILD</div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🧱<div class="pc-badge">Best Seller</div></div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Portland Cement OPC 50kg</div>
+          <div class="pc-desc">Ordinary Portland Cement, Class 42.5N. Ideal for concrete slabs, columns, and masonry.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 14,500</div>
+            <button class="pc-btn" onclick="enquire('Portland Cement OPC 50kg')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🏗️</div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Steel Rebar 12mm × 12m (Deformed)</div>
+          <div class="pc-desc">High-yield Grade 60 deformed reinforcing bar. For reinforced concrete beams, slabs, and columns.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 18,000</div>
+            <button class="pc-btn" onclick="enquire('Steel Rebar 12mm 12m')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">⚙️<div class="pc-badge new">New</div></div>
+        <div class="pc-body">
+          <div class="pc-cat build">Power Tools</div>
+          <div class="pc-name">Bosch 900W Angle Grinder</div>
+          <div class="pc-desc">Corded 115mm angle grinder with safety guard, adjustable handle and spindle lock.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 55,000</div>
+            <button class="pc-btn" onclick="enquire('Bosch 900W Angle Grinder')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🧰</div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Sand & Gravel Bag 50kg</div>
+          <div class="pc-desc">Washed river sand for plastering and concrete mixing. Consistent gradation, low silt content.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 4,000</div>
+            <button class="pc-btn" onclick="enquire('Sand & Gravel Bag 50kg')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🪵</div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Timber Beam 100×50mm × 4.8m</div>
+          <div class="pc-desc">Kiln-dried structural pine, graded C24. For roofing rafters, floor joists, and formwork.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 12,000</div>
+            <button class="pc-btn" onclick="enquire('Timber Beam 100x50mm')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">⛑️<div class="pc-badge">Best Seller</div></div>
+        <div class="pc-body">
+          <div class="pc-cat build">Safety</div>
+          <div class="pc-name">Safety Helmet Class A — Hard Hat</div>
+          <div class="pc-desc">Impact-resistant HDPE shell with ratchet suspension. EN 397 certified. Available in 4 colours.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 8,000</div>
+            <button class="pc-btn" onclick="enquire('Safety Helmet Class A')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🔩</div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Hex Bolt Set M10 (Box of 100)</div>
+          <div class="pc-desc">Grade 8.8 zinc-plated hex bolts with matching nuts and washers. For structural steel connections.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 9,500</div>
+            <button class="pc-btn" onclick="enquire('Hex Bolt Set M10')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img build-img">🏠<div class="pc-badge sale">Sale</div></div>
+        <div class="pc-body">
+          <div class="pc-cat build">Construction</div>
+          <div class="pc-name">Roof Sheet IBR 0.47mm × 5m</div>
+          <div class="pc-desc">Pre-painted IBR profile galvanised steel roofing sheet. Termite-proof, high wind rated.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 21,000</div>
+            <button class="pc-btn" onclick="enquire('Roof Sheet IBR 0.47mm 5m')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIGHTING ══ -->
+<section id="lighting" class="cat-section">
+  <div class="container">
+    <div class="cat-band light reveal">
+      <div class="cat-band-icon">💡</div>
+      <div>
+        <div class="cat-band-label">Category</div>
+        <div class="cat-band-title">Lighting</div>
+        <div class="cat-band-sub">Elegant indoor and outdoor lighting solutions for every space and style.</div>
+      </div>
+      <div class="cat-band-count">LIGHT</div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">💡<div class="pc-badge">Popular</div></div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">LED Pendant Cluster — 5 Bulb</div>
+          <div class="pc-desc">Adjustable height cluster pendant with gold canopy. Warm white 3000K, 200W equivalent.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 78,000</div>
+            <button class="pc-btn" onclick="enquire('LED Pendant Cluster 5 Bulb')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">🔦<div class="pc-badge new">New</div></div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Recessed LED Downlight 12W (Pack of 6)</div>
+          <div class="pc-desc">Slim-fit recessed downlights, dimmable, IP44 rated. 4000K neutral white, 950 lumens each.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 42,000</div>
+            <button class="pc-btn" onclick="enquire('Recessed LED Downlight 12W')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">🏮</div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Garden Wall Lantern — Black Iron</div>
+          <div class="pc-desc">Traditional-style outdoor wall lantern, IP44, E27 socket. Powder-coated matte black finish.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 38,000</div>
+            <button class="pc-btn" onclick="enquire('Garden Wall Lantern Black Iron')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">💡</div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Floodlight 100W LED — Outdoor</div>
+          <div class="pc-desc">High-output outdoor security floodlight, IP65, 10,000 lumens. Adjustable mount bracket.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 28,000</div>
+            <button class="pc-btn" onclick="enquire('Floodlight 100W LED Outdoor')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">✨<div class="pc-badge">Luxury</div></div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Crystal Chandelier — 8-Arm</div>
+          <div class="pc-desc">K9 crystal chandelier with chrome frame, 8 E14 sockets. Ideal for lobbies and dining rooms.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 210,000</div>
+            <button class="pc-btn" onclick="enquire('Crystal Chandelier 8-Arm')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">🌟<div class="pc-badge sale">Sale</div></div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">LED Strip Roll 5m — Warm White</div>
+          <div class="pc-desc">Self-adhesive 12V LED strip, dimmable, 300 LEDs/roll. Ideal for under-cabinet and cove lighting.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 14,000</div>
+            <button class="pc-btn" onclick="enquire('LED Strip Roll 5m Warm White')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">🔆</div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Motion Sensor Ceiling Light 24W</div>
+          <div class="pc-desc">PIR motion-activated LED ceiling light, 360° detection, adjustable timer and sensitivity.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 19,500</div>
+            <button class="pc-btn" onclick="enquire('Motion Sensor Ceiling Light 24W')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="pc-img light-img">💎<div class="pc-badge new">New</div></div>
+        <div class="pc-body">
+          <div class="pc-cat light">Lighting</div>
+          <div class="pc-name">Smart RGB Bulb E27 — Colour Changing</div>
+          <div class="pc-desc">WiFi smart bulb with 16 million colours, warm to cool white, app and voice control. 9W.</div>
+          <div class="pc-footer">
+            <div class="pc-price">RWF 12,000</div>
+            <button class="pc-btn" onclick="enquire('Smart RGB Bulb E27')">Enquire</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROMO STRIP -->
+<div class="promo-strip">
+  <div class="promo-strip-inner">
+    <p>Bulk Order Discount</p>
+    <h2>Order over RWF 500,000?<br><span>Get 15% Off — automatically.</span></h2>
+    <div class="promo-strip-sub">No code needed. Available on all product categories. Delivery included across Kigali.</div>
+    <a href="index.html#contact" class="btn-gold">Request a Quote →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">LYDIE'S <span>QUINCAILLERIE</span></div>
+      <div class="footer-tagline">Kigali's trusted hardware store. Quality products, expert advice, and reliable service for every build.</div>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        <a href="#" class="social-btn" aria-label="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Categories</div>
+      <ul>
+        <li><a href="#featured">Featured Items</a></li>
+        <li><a href="#bathroom">Bathroom & Plumbing</a></li>
+        <li><a href="#electricity">Electrical Supplies</a></li>
+        <li><a href="#construction">Construction</a></li>
+        <li><a href="#lighting">Lighting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="index.html#services">Hardware Retail</a></li>
+        <li><a href="index.html#services">Site Delivery</a></li>
+        <li><a href="index.html#services">Consultation</a></li>
+        <li><a href="index.html#services">Contractor Accounts</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <ul>
+        <li><a href="index.html#why">About Us</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 <span>Lydie's Quincaillerie</span>. All rights reserved. Kigali, Rwanda.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Back to top
+  window.addEventListener('scroll', () => {
+    document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  // Active category pill on scroll
+  const sections = ['featured','bathroom','electricity','construction','lighting'];
+  const pills = document.querySelectorAll('.cat-pill');
+  window.addEventListener('scroll', () => {
+    let current = 'featured';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 160) current = id;
+    });
+    pills.forEach(p => {
+      p.classList.toggle('active', p.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Enquire function — scrolls to contact form on index page
+  function enquire(productName) {
+    const msg = `Hi, I am interested in: ${productName}. Please provide more information.`;
+    window.location.href = `index.html#contact`;
+    sessionStorage.setItem('enquireProduct', productName);
+  }
+</script>
+</body>
+</html>
