@@ -55,10 +55,10 @@
   .mobile-menu a:hover { color: var(--gold); }
 
   /* ── PAGE HERO ── */
-  .page-hero { padding: 9rem 2rem 5rem; background: var(--bg-alt); position: relative; overflow: hidden; }
+  .page-hero { padding: 8.5rem 2rem 4.5rem; background: var(--bg-alt); position: relative; overflow: hidden; }
   .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(184,131,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(184,131,42,0.06) 1px, transparent 1px); background-size: 60px 60px; }
   .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-  .page-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+  .page-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr); align-items: center; gap: 2.5rem; }
   .page-hero-label { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
   .page-hero-label::before { content: ''; width: 32px; height: 2px; background: var(--gold); }
   .page-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 600; line-height: 1.05; letter-spacing: 1px; color: var(--text-dark); }
@@ -66,6 +66,24 @@
   .page-hero-sub { color: var(--text-light); font-size: 1rem; margin-top: 1rem; max-width: 480px; }
   .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.5rem; }
   .breadcrumb a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .hero-stats { display:flex; align-items:flex-end; gap:1rem; margin-top:2rem; }
+  .hero-stock-number { font-family:var(--font-display); font-size:5rem; font-weight:600; color:rgba(184,131,42,0.16); line-height:0.95; }
+  .hero-stock-label { font-family:var(--font-body); font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); max-width:120px; }
+  .hero-carousel { position: relative; min-height: 480px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 45px rgba(0,0,0,0.10); background: #ddd; }
+  .hero-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity 0.6s ease; }
+  .hero-slide.active { opacity: 1; pointer-events: auto; }
+  .hero-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-slide::after { content:''; position:absolute; inset:0; background: linear-gradient(180deg, rgba(28,17,8,0.08) 0%, rgba(28,17,8,0.58) 100%); }
+  .hero-slide-content { position:absolute; left:0; right:0; bottom:0; z-index:2; padding: 1.5rem 1.5rem 1.35rem; color:#fff; }
+  .hero-slide-cat { display:inline-block; margin-bottom:0.55rem; font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; background:rgba(184,131,42,0.88); padding:0.28rem 0.7rem; border-radius:999px; }
+  .hero-slide-title { font-family:var(--font-display); font-size:1.85rem; line-height:1.1; margin-bottom:0.4rem; }
+  .hero-slide-price { font-family:var(--font-display); font-size:1.25rem; color:#F7D79A; }
+  .hero-carousel-controls { position:absolute; right:1rem; bottom:1rem; z-index:3; display:flex; gap:0.55rem; }
+  .hero-carousel-btn { width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,0.9); color:var(--text-dark); font-size:1.05rem; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.12); transition: transform 0.2s, background 0.2s; }
+  .hero-carousel-btn:hover { background:#fff; transform: translateY(-2px); }
+  .hero-carousel-dots { position:absolute; left:1.2rem; bottom:1.3rem; z-index:3; display:flex; gap:0.5rem; }
+  .hero-dot { width:10px; height:10px; border-radius:50%; border:none; background:rgba(255,255,255,0.45); cursor:pointer; transition: transform 0.2s, background 0.2s; }
+  .hero-dot.active { background:#fff; transform: scale(1.12); }
 
   /* ── CATEGORY NAV ── */
   .cat-nav { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 70px; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
@@ -210,9 +228,9 @@
   #backTop:hover { background: var(--gold-light); }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) { .featured-grid { grid-template-columns: 1fr 1fr; } .feat-card-hero { grid-row: auto; grid-column: 1 / -1; } .feat-card-hero .fc-img { height: 260px; } }
+  @media (max-width: 1024px) { .page-hero-inner { grid-template-columns: 1fr; } .hero-carousel { min-height: 420px; } .featured-grid { grid-template-columns: 1fr 1fr; } .feat-card-hero { grid-row: auto; grid-column: 1 / -1; } .feat-card-hero .fc-img { height: 260px; } }
   @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } .footer-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px) { .page-hero { padding: 7rem 1.25rem 3.5rem; } .cat-section { padding: 3.5rem 1.25rem; } #featured { padding: 3.5rem 1.25rem; } .featured-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .cat-band-count { display: none; } }
+  @media (max-width: 600px) { .page-hero { padding: 7rem 1.25rem 3.5rem; } .hero-stock-number { font-size: 3.8rem; } .hero-carousel { min-height: 360px; } .hero-slide-title { font-size: 1.45rem; } .cat-section { padding: 3.5rem 1.25rem; } #featured { padding: 3.5rem 1.25rem; } .featured-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .cat-band-count { display: none; } }
 </style>
 </head>
 <body>
@@ -247,10 +265,65 @@
       <div class="page-hero-label">Our Full Catalogue</div>
       <h1>Everything You Need,<br><em>All in One Place.</em></h1>
       <p class="page-hero-sub">From bathroom fittings to construction essentials — premium products at fair prices, always in stock.</p>
+      <div class="hero-stats">
+        <div class="hero-stock-number">500+</div>
+        <div class="hero-stock-label">Products in Stock</div>
+      </div>
     </div>
-    <div style="text-align:right;">
-      <div style="font-family:var(--font-display);font-size:5rem;font-weight:600;color:rgba(184,131,42,0.12);line-height:1;">500+</div>
-      <div style="font-family:var(--font-body);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);">Products in Stock</div>
+
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-slide active">
+        <img src="mirror1.jpg" alt="Oval LED Backlit Bathroom Mirror">
+        <div class="hero-slide-content">
+          <div class="hero-slide-cat">Bathroom</div>
+          <div class="hero-slide-title">Oval LED Backlit Mirror — Black Frame</div>
+          <div class="hero-slide-price">RWF 185,000</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img src="images/lights1.jpg" alt="Modern Sputnik Chandelier">
+        <div class="hero-slide-content">
+          <div class="hero-slide-cat">Lighting</div>
+          <div class="hero-slide-title">Modern Sputnik Chandelier — 12 Globe</div>
+          <div class="hero-slide-price">RWF 210,000</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img src="images/bathroomdecor5.jpg" alt="Smart Electric Towel Warmer">
+        <div class="hero-slide-content">
+          <div class="hero-slide-cat">Bathroom</div>
+          <div class="hero-slide-title">Smart Electric Towel Warmer — Digital Timer</div>
+          <div class="hero-slide-price">RWF 145,000</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img src="images/cables.jpg" alt="PVC Single Core Cable 1.5mm² — 100m Roll">
+        <div class="hero-slide-content">
+          <div class="hero-slide-cat">Electrical</div>
+          <div class="hero-slide-title">PVC Single Core Cable 1.5mm² — 100m Roll</div>
+          <div class="hero-slide-price">RWF 22,000</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img src="images/helmet.JPG" alt="Safety Helmet Class A — Hard Hat">
+        <div class="hero-slide-content">
+          <div class="hero-slide-cat">Construction</div>
+          <div class="hero-slide-title">Safety Helmet Class A — Hard Hat</div>
+          <div class="hero-slide-price">RWF 8,000</div>
+        </div>
+      </div>
+
+      <div class="hero-carousel-dots" id="heroDots">
+        <button class="hero-dot active" aria-label="Go to slide 1"></button>
+        <button class="hero-dot" aria-label="Go to slide 2"></button>
+        <button class="hero-dot" aria-label="Go to slide 3"></button>
+        <button class="hero-dot" aria-label="Go to slide 4"></button>
+        <button class="hero-dot" aria-label="Go to slide 5"></button>
+      </div>
+      <div class="hero-carousel-controls">
+        <button class="hero-carousel-btn" id="heroPrev" aria-label="Previous slide">‹</button>
+        <button class="hero-carousel-btn" id="heroNext" aria-label="Next slide">›</button>
+      </div>
     </div>
   </div>
 </div>
@@ -764,6 +837,48 @@
     });
     pills.forEach(p => { p.classList.toggle('active', p.getAttribute('href') === '#' + current); });
   });
+
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroDots = document.querySelectorAll('.hero-dot');
+  const heroPrev = document.getElementById('heroPrev');
+  const heroNext = document.getElementById('heroNext');
+  let heroIndex = 0;
+  let heroInterval;
+
+  function showHeroSlide(index) {
+    heroSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    heroDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    heroIndex = index;
+  }
+
+  function nextHeroSlide() {
+    showHeroSlide((heroIndex + 1) % heroSlides.length);
+  }
+
+  function prevHeroSlide() {
+    showHeroSlide((heroIndex - 1 + heroSlides.length) % heroSlides.length);
+  }
+
+  function startHeroAutoplay() {
+    heroInterval = setInterval(nextHeroSlide, 4000);
+  }
+
+  function resetHeroAutoplay() {
+    clearInterval(heroInterval);
+    startHeroAutoplay();
+  }
+
+  if (heroSlides.length) {
+    heroNext.addEventListener('click', () => { nextHeroSlide(); resetHeroAutoplay(); });
+    heroPrev.addEventListener('click', () => { prevHeroSlide(); resetHeroAutoplay(); });
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showHeroSlide(index);
+        resetHeroAutoplay();
+      });
+    });
+    startHeroAutoplay();
+  }
 
   function enquire(productName) {
     sessionStorage.setItem('enquireProduct', productName);
