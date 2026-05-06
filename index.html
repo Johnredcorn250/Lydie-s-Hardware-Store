@@ -5,6 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Lydie's Quincaillerie — Kigali's trusted hardware store. Quality construction materials, electrical, plumbing & lighting supplies with delivery across Rwanda.">
 <title>Lydie's Quincaillerie — Kigali Hardware Store</title>
+
+<!-- ==========================================================
+     FAVICON — gold serif "L" monogram
+     Single SVG favicon, scales to any size, modern browsers
+     ========================================================== -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23B8832A'/%3E%3Ctext x='50' y='75' font-family='Georgia,Times New Roman,serif' font-size='72' font-weight='700' fill='%23FAFAF7' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23B8832A'/%3E%3Ctext x='50' y='75' font-family='Georgia,Times New Roman,serif' font-size='72' font-weight='700' fill='%23FAFAF7' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+
+<!-- ==========================================================
+     OPEN GRAPH / SOCIAL SHARING
+     Critical for WhatsApp link previews — most customers will
+     share this URL on WhatsApp. Replace og:image with a real
+     hosted image once you have one (recommended: 1200x630px).
+     ========================================================== -->
+<meta property="og:title" content="Lydie's Quincaillerie — Kigali Hardware Store">
+<meta property="og:description" content="Kigali's trusted hardware store. Quality construction materials, electrical, plumbing & lighting supplies with delivery across Rwanda.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_RW">
+<meta property="og:site_name" content="Lydie's Quincaillerie">
+<!-- TODO: once deployed, set og:url and og:image to absolute URLs -->
+<meta property="og:url" content="https://lydieshardware.rw/">
+<meta property="og:image" content="https://lydieshardware.rw/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ==========================================================
+     SCHEMA.ORG LOCALBUSINESS — boosts local Google search ranking
+     ========================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HardwareStore",
+  "name": "Lydie's Quincaillerie",
+  "description": "Kigali's trusted hardware store offering quality construction materials, electrical, plumbing and lighting supplies with delivery across Rwanda.",
+  "image": "https://lydieshardware.rw/og-image.jpg",
+  "url": "https://lydieshardware.rw/",
+  "telephone": "+250788000000",
+  "email": "info@lydieshardware.rw",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kabuga",
+    "addressLocality": "Kigali",
+    "addressRegion": "Kigali",
+    "addressCountry": "RW"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -1.9536,
+    "longitude": 30.1814
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,6 +99,7 @@
     --text-dark: #1C1108;
     --text-mid: #4A3F32;
     --text-light: #7A6A54;
+    --error: #B33A3A;
     --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
     --font-body: 'Raleway', system-ui, sans-serif;
   }
@@ -240,7 +314,7 @@
     letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.25rem;
   }
 
-  /* Hero visual: stylised Convention Center dome silhouette */
+  /* Hero visual: Imigongo-inspired geometric composition */
   .hero-visual {
     position: relative;
     animation: fadeUp 0.6s 0.3s ease both;
@@ -259,7 +333,7 @@
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
   .landmark-svg {
-    width: 100%; height: 200px; margin-bottom: 1.25rem;
+    width: 100%; height: 240px; margin-bottom: 1.25rem;
   }
   .landmark-label {
     font-family: var(--font-display); font-style: italic;
@@ -464,7 +538,7 @@
   }
 
   /* ==========================================================
-     VISIT US (Kigali Convention Center feature)
+     VISIT US (Google Maps embed)
      ========================================================== */
   #visit { background: var(--bg-main); position: relative; overflow: hidden; }
   .visit-grid {
@@ -474,21 +548,19 @@
   .visit-image-wrap {
     position: relative;
     aspect-ratio: 4 / 3;
-    background: linear-gradient(180deg, var(--bg-alt) 0%, #ECE3D0 100%);
+    background: var(--bg-alt);
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
     box-shadow: 0 6px 28px rgba(0,0,0,0.08);
   }
-  /* When you replace this with a real photo of Kigali Convention Center
-     (or your storefront), set background-image on .visit-image-wrap and
-     remove the .visit-svg below. Recommended source: Unsplash search
-     "Kigali Convention Centre" — free for commercial use with attribution. */
-  .visit-svg {
-    position: absolute; inset: 0; width: 100%; height: 100%;
+  .visit-map {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0; display: block;
   }
   .visit-overlay-tag {
-    position: absolute; top: 1rem; left: 1rem;
+    position: absolute; top: 1rem; left: 1rem; z-index: 2;
     background: var(--bg-card);
     padding: 0.5rem 0.85rem;
     border-radius: 2px;
@@ -496,16 +568,19 @@
     letter-spacing: 2px; text-transform: uppercase;
     color: var(--gold);
     border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    pointer-events: none;
   }
   .visit-meta {
-    position: absolute; bottom: 1rem; left: 1rem; right: 1rem;
-    background: rgba(28,17,8,0.85);
+    position: absolute; bottom: 1rem; left: 1rem; right: 1rem; z-index: 2;
+    background: rgba(28,17,8,0.88);
     backdrop-filter: blur(8px);
     color: #fff;
     padding: 0.85rem 1rem;
     border-radius: 4px;
     font-size: 0.78rem;
     line-height: 1.5;
+    pointer-events: none;
   }
   .visit-meta strong { color: var(--gold-light); display: block; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 700; }
 
@@ -618,12 +693,16 @@
     border: 1px solid var(--border);
     border-radius: 4px; padding: 0.75rem 0.9rem;
     color: var(--text-dark); font-family: var(--font-body); font-size: 0.95rem;
-    transition: border-color 0.2s; outline: none;
+    transition: border-color 0.2s, background 0.2s; outline: none;
     -webkit-appearance: none; appearance: none;
     min-height: 44px;
   }
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
     border-color: var(--gold);
+  }
+  .form-group input.invalid, .form-group textarea.invalid, .form-group select.invalid {
+    border-color: var(--error);
+    background: rgba(179,58,58,0.04);
   }
   .form-group select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23B8832A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -634,6 +713,15 @@
   .form-group textarea { resize: vertical; min-height: 100px; }
   .form-row { display: grid; grid-template-columns: 1fr; gap: 0; }
   .form-row .form-group { margin-bottom: 1rem; }
+
+  .form-error {
+    display: none;
+    font-size: 0.72rem;
+    color: var(--error);
+    margin-top: 0.35rem;
+    letter-spacing: 0.3px;
+  }
+  .form-error.show { display: block; }
 
   #formMsg {
     font-size: 0.85rem; color: var(--gold); margin-top: 0.75rem;
@@ -752,7 +840,7 @@
 
     .hero-content { grid-template-columns: 1fr 1fr; gap: 4rem; }
     .hero-visual { display: block; }
-    .landmark-svg { height: 240px; }
+    .landmark-svg { height: 280px; }
 
     .services-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .cat-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
@@ -839,50 +927,72 @@
     </div>
     <div class="hero-visual">
       <div class="landmark-card">
-        <!-- Kigali Convention Centre — stylised dome silhouette in SVG.
-             Replace with a real photo when available; recommended:
-             search "Kigali Convention Centre" on unsplash.com (free, commercial use). -->
-        <svg class="landmark-svg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <!-- =====================================================
+             IMIGONGO-INSPIRED COMPOSITION
+             Imigongo is Rwanda's traditional geometric art form,
+             defined by bold diamond patterns, precision, and
+             lasting craftsmanship — the perfect parallel for a
+             quality hardware store.
+             ===================================================== -->
+        <svg class="landmark-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Imigongo-inspired Rwandan geometric art">
           <defs>
-            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#FAFAF7"/>
               <stop offset="100%" stop-color="#F2EDE3"/>
             </linearGradient>
-            <linearGradient id="domeGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#D4A84B"/>
-              <stop offset="100%" stop-color="#8B6520"/>
-            </linearGradient>
-            <pattern id="domeLines" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M0 20 L20 0" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <pattern id="zigTop" width="24" height="14" patternUnits="userSpaceOnUse">
+              <path d="M0 14 L12 0 L24 14" stroke="#B8832A" stroke-width="1.2" fill="none" opacity="0.35"/>
+            </pattern>
+            <pattern id="zigBot" width="24" height="14" patternUnits="userSpaceOnUse">
+              <path d="M0 0 L12 14 L24 0" stroke="#B8832A" stroke-width="1.2" fill="none" opacity="0.35"/>
             </pattern>
           </defs>
-          <rect width="400" height="240" fill="url(#skyGrad)"/>
-          <!-- Background hills -->
-          <path d="M0 180 Q 80 150 160 165 T 320 160 T 400 170 L 400 240 L 0 240 Z" fill="rgba(184,131,42,0.08)"/>
-          <path d="M0 195 Q 100 175 200 185 T 400 190 L 400 240 L 0 240 Z" fill="rgba(184,131,42,0.12)"/>
-          <!-- Convention Centre dome -->
-          <ellipse cx="200" cy="200" rx="130" ry="100" fill="url(#domeGrad)"/>
-          <ellipse cx="200" cy="200" rx="130" ry="100" fill="url(#domeLines)"/>
-          <!-- Dome ribs (lattice) -->
-          <g stroke="rgba(255,255,255,0.25)" stroke-width="0.8" fill="none">
-            <ellipse cx="200" cy="200" rx="130" ry="100"/>
-            <ellipse cx="200" cy="200" rx="105" ry="85"/>
-            <ellipse cx="200" cy="200" rx="80" ry="68"/>
-            <ellipse cx="200" cy="200" rx="55" ry="50"/>
-            <line x1="70" y1="200" x2="330" y2="200"/>
-            <line x1="105" y1="115" x2="295" y2="285"/>
-            <line x1="295" y1="115" x2="105" y2="285"/>
-            <line x1="200" y1="100" x2="200" y2="300"/>
+
+          <!-- Cream background -->
+          <rect width="400" height="280" fill="url(#cardBg)"/>
+
+          <!-- Top zigzag border -->
+          <rect x="0" y="0" width="400" height="14" fill="url(#zigTop)"/>
+          <!-- Bottom zigzag border -->
+          <rect x="0" y="266" width="400" height="14" fill="url(#zigBot)"/>
+
+          <!-- Side flanking small diamonds -->
+          <g fill="#8B6520" opacity="0.55">
+            <polygon points="40,140 52,128 64,140 52,152"/>
+            <polygon points="336,140 348,128 360,140 348,152"/>
           </g>
-          <!-- Crown -->
-          <circle cx="200" cy="100" r="6" fill="#1C1108"/>
-          <line x1="200" y1="100" x2="200" y2="80" stroke="#1C1108" stroke-width="1.5"/>
-          <!-- Foreground silhouette -->
-          <rect x="0" y="218" width="400" height="22" fill="rgba(28,17,8,0.08)"/>
+          <g fill="#B8832A" opacity="0.4">
+            <polygon points="18,140 26,132 34,140 26,148"/>
+            <polygon points="366,140 374,132 382,140 374,148"/>
+          </g>
+
+          <!-- Central layered Imigongo diamond -->
+          <g transform="translate(200, 140)">
+            <!-- Outer dark layer -->
+            <polygon points="0,-110 95,0 0,110 -95,0" fill="#1C1108"/>
+            <!-- Cream layer -->
+            <polygon points="0,-95 82,0 0,95 -82,0" fill="#F2EDE3"/>
+            <!-- Gold layer -->
+            <polygon points="0,-78 67,0 0,78 -67,0" fill="#B8832A"/>
+            <!-- Inner cream -->
+            <polygon points="0,-58 50,0 0,58 -50,0" fill="#F2EDE3"/>
+            <!-- Dark inner diamond -->
+            <polygon points="0,-38 33,0 0,38 -33,0" fill="#1C1108"/>
+            <!-- Gold inner accent -->
+            <polygon points="0,-18 15,0 0,18 -15,0" fill="#D4A84B"/>
+            <!-- Center dot -->
+            <circle r="3" fill="#1C1108"/>
+          </g>
+
+          <!-- Triangular ray accents at corners of central diamond -->
+          <g fill="#8B6520" opacity="0.45">
+            <polygon points="200,18 210,30 190,30"/>
+            <polygon points="200,262 210,250 190,250"/>
+          </g>
         </svg>
-        <div class="landmark-label">Inspired by</div>
-        <div class="landmark-title">Kigali Convention Centre</div>
-        <div class="landmark-desc">Iconic landmark of Rwanda's capital — a symbol of progress and enduring craftsmanship. Just like the projects we help you build.</div>
+        <div class="landmark-label">Inspired by tradition —</div>
+        <div class="landmark-title">Imigongo · Rwandan Craft</div>
+        <div class="landmark-desc">A centuries-old geometric art celebrated for its bold patterns, precision, and craft built to last. The same care and quality we bring to every order.</div>
       </div>
     </div>
   </div>
@@ -1093,17 +1203,17 @@
 </section>
 
 <!-- ==========================================================
-     VISIT US — Kigali Convention Centre feature
+     VISIT US — Google Maps embed (Kabuga, Kigali)
      ========================================================== -->
 <section id="visit">
   <div class="container">
     <div class="visit-grid">
       <div class="reveal">
         <div class="section-label">Visit Our Store</div>
-        <h2 class="section-title">In the Heart of Kigali</h2>
-        <p class="section-sub">Find us a short drive from the iconic Kigali Convention Centre — the unmistakable landmark of Rwanda's capital. Our showroom is open six days a week with covered parking and on-site loading bays for bulk orders.</p>
+        <h2 class="section-title">Find Us in Kabuga</h2>
+        <p class="section-sub">Our showroom is located in Kabuga, on Kigali's eastern side — easy to reach by car, taxi-moto or public transport. We're open six days a week with covered parking and on-site loading bays for bulk orders.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kabuga,Kigali,Rwanda" target="_blank" rel="noopener" class="btn-primary">
             Get Directions
             <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -1111,65 +1221,17 @@
         </div>
       </div>
       <div class="visit-image-wrap reveal">
-        <!-- ===========================================================
-             PHOTO SLOT — replace this SVG with a real image when ready.
-             To add a photograph:
-             1. Save the image to the same folder as this file (e.g. kcc.jpg)
-             2. Replace the entire <svg class="visit-svg">...</svg> block below with:
-                <img class="visit-svg" src="kcc.jpg" alt="Kigali Convention Centre"
-                     style="object-fit:cover">
-             Recommended free source: unsplash.com (search "Kigali Convention")
-             =========================================================== -->
-        <svg class="visit-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#F2EDE3"/>
-              <stop offset="60%" stop-color="#E8DCC4"/>
-              <stop offset="100%" stop-color="#D4C29A"/>
-            </linearGradient>
-            <linearGradient id="dome2" x1="0.5" y1="0" x2="0.5" y2="1">
-              <stop offset="0%" stop-color="#E0BC68"/>
-              <stop offset="50%" stop-color="#B8832A"/>
-              <stop offset="100%" stop-color="#6B4F19"/>
-            </linearGradient>
-            <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0%" stop-color="rgba(255,220,150,0.4)"/>
-              <stop offset="100%" stop-color="rgba(255,220,150,0)"/>
-            </radialGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#sky2)"/>
-          <!-- Sun glow -->
-          <circle cx="320" cy="80" r="80" fill="url(#glow)"/>
-          <!-- Distant hills (mille collines reference) -->
-          <path d="M0 220 Q 60 195 120 205 T 240 200 T 400 210 L 400 300 L 0 300 Z" fill="rgba(184,131,42,0.18)"/>
-          <path d="M0 240 Q 80 220 160 230 T 320 235 T 400 240 L 400 300 L 0 300 Z" fill="rgba(184,131,42,0.28)"/>
-          <!-- Ground -->
-          <rect x="0" y="265" width="400" height="35" fill="rgba(28,17,8,0.15)"/>
-          <!-- Convention Centre dome -->
-          <ellipse cx="200" cy="265" rx="150" ry="115" fill="url(#dome2)"/>
-          <!-- Dome lattice -->
-          <g stroke="rgba(255,255,255,0.22)" stroke-width="0.7" fill="none">
-            <ellipse cx="200" cy="265" rx="150" ry="115"/>
-            <ellipse cx="200" cy="265" rx="125" ry="98"/>
-            <ellipse cx="200" cy="265" rx="100" ry="82"/>
-            <ellipse cx="200" cy="265" rx="75" ry="64"/>
-            <ellipse cx="200" cy="265" rx="48" ry="44"/>
-            <line x1="50" y1="265" x2="350" y2="265"/>
-            <line x1="90" y1="170" x2="310" y2="360"/>
-            <line x1="310" y1="170" x2="90" y2="360"/>
-            <line x1="200" y1="150" x2="200" y2="380"/>
-            <line x1="60" y1="220" x2="340" y2="320"/>
-            <line x1="340" y1="220" x2="60" y2="320"/>
-          </g>
-          <!-- Crown light -->
-          <circle cx="200" cy="150" r="5" fill="#1C1108"/>
-          <line x1="200" y1="150" x2="200" y2="135" stroke="#1C1108" stroke-width="1.4"/>
-          <circle cx="200" cy="148" r="9" fill="rgba(255,220,150,0.35)"/>
-        </svg>
-        <div class="visit-overlay-tag">Kigali · Rwanda</div>
+        <iframe
+          class="visit-map"
+          src="https://www.google.com/maps?q=Kabuga,Kigali,Rwanda&hl=en&z=14&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Lydie's Quincaillerie location in Kabuga, Kigali"
+          allowfullscreen></iframe>
+        <div class="visit-overlay-tag">Kabuga · Kigali</div>
         <div class="visit-meta">
           <strong>Find Us</strong>
-          KG 15 Ave, Kimironko · Open Mon–Sat
+          Kabuga, Kigali · Open Mon–Sat
         </div>
       </div>
     </div>
@@ -1262,7 +1324,7 @@
           </div>
           <div>
             <div class="ci-label">Location</div>
-            <div class="ci-value">KG 15 Ave, Kimironko<br>Gasabo District, Kigali, Rwanda</div>
+            <div class="ci-value">Kabuga<br>Kigali, Rwanda</div>
           </div>
         </div>
         <div class="ci-item">
@@ -1306,19 +1368,23 @@
           <div class="form-group">
             <label for="fname">First Name</label>
             <input type="text" id="fname" placeholder="e.g. Jean">
+            <div class="form-error" data-for="fname"></div>
           </div>
           <div class="form-group">
             <label for="lname">Last Name</label>
             <input type="text" id="lname" placeholder="e.g. Habimana">
+            <div class="form-error" data-for="lname"></div>
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" placeholder="your@email.com">
+          <div class="form-error" data-for="email"></div>
         </div>
         <div class="form-group">
           <label for="phone">Phone (optional)</label>
           <input type="tel" id="phone" placeholder="+250 7..">
+          <div class="form-error" data-for="phone"></div>
         </div>
         <div class="form-group">
           <label for="subject">Subject</label>
@@ -1330,16 +1396,18 @@
             <option>Delivery Request</option>
             <option>General Question</option>
           </select>
+          <div class="form-error" data-for="subject"></div>
         </div>
         <div class="form-group">
           <label for="message">Message</label>
           <textarea id="message" placeholder="Tell us how we can help…"></textarea>
+          <div class="form-error" data-for="message"></div>
         </div>
         <button class="btn-primary" style="width:100%;justify-content:center" onclick="submitForm()">
           Send Message
           <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
-        <p id="formMsg">✓ Thank you! We'll get back to you within 24 hours.</p>
+        <p id="formMsg">✓ Opening your email app — your message is ready to send.</p>
       </div>
     </div>
   </div>
@@ -1431,26 +1499,88 @@
   }
 
   /* ──────────────────────────────────────────
-     CONTACT FORM
+     CONTACT FORM — inline validation + mailto
+     No backend required: opens user's email client
+     with a pre-filled message to the store.
      ────────────────────────────────────────── */
-  function submitForm() {
-    const f = document.getElementById('fname').value.trim();
-    const e = document.getElementById('email').value.trim();
-    if (!f || !e) {
-      alert('Please fill in your name and email.');
-      return;
+  const STORE_EMAIL = 'info@lydieshardware.rw';
+
+  function showFieldError(id, message) {
+    const input = document.getElementById(id);
+    const err = document.querySelector(`.form-error[data-for="${id}"]`);
+    if (input) input.classList.add('invalid');
+    if (err) {
+      err.textContent = message;
+      err.classList.add('show');
     }
-    /* TODO: connect to Formspree / EmailJS backend.
-       Example with Formspree:
-         fetch('https://formspree.io/f/YOUR_ID', {
-           method: 'POST',
-           headers: { 'Accept': 'application/json' },
-           body: new FormData(formElement)
-         });
-    */
+  }
+
+  function clearFieldErrors() {
+    document.querySelectorAll('.form-group input, .form-group select, .form-group textarea')
+      .forEach(el => el.classList.remove('invalid'));
+    document.querySelectorAll('.form-error')
+      .forEach(el => { el.classList.remove('show'); el.textContent = ''; });
+  }
+
+  // Live clearing of error on user input
+  document.querySelectorAll('.form-group input, .form-group select, .form-group textarea')
+    .forEach(el => {
+      el.addEventListener('input', () => {
+        el.classList.remove('invalid');
+        const err = document.querySelector(`.form-error[data-for="${el.id}"]`);
+        if (err) { err.classList.remove('show'); err.textContent = ''; }
+      });
+      el.addEventListener('change', () => {
+        el.classList.remove('invalid');
+        const err = document.querySelector(`.form-error[data-for="${el.id}"]`);
+        if (err) { err.classList.remove('show'); err.textContent = ''; }
+      });
+    });
+
+  function submitForm() {
+    clearFieldErrors();
+
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value.trim();
+
+    let valid = true;
+    if (!fname) { showFieldError('fname', 'Please enter your first name.'); valid = false; }
+    if (!lname) { showFieldError('lname', 'Please enter your last name.'); valid = false; }
+    if (!email) {
+      showFieldError('email', 'Please enter your email address.'); valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showFieldError('email', 'Please enter a valid email address.'); valid = false;
+    }
+    if (!subject) { showFieldError('subject', 'Please select a subject.'); valid = false; }
+    if (!message) { showFieldError('message', 'Please write a message.'); valid = false; }
+
+    if (!valid) return;
+
+    // Build mailto URL — opens user's email client with pre-filled content
+    const mailSubject = `[Website] ${subject}`;
+    const mailBody =
+      `Name: ${fname} ${lname}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone || 'Not provided'}\n` +
+      `Subject: ${subject}\n\n` +
+      `Message:\n${message}`;
+
+    const mailtoUrl =
+      `mailto:${STORE_EMAIL}` +
+      `?subject=${encodeURIComponent(mailSubject)}` +
+      `&body=${encodeURIComponent(mailBody)}`;
+
     const msg = document.getElementById('formMsg');
     msg.style.display = 'block';
-    setTimeout(() => { msg.style.display = 'none'; }, 5000);
+
+    // Open the user's mail client
+    window.location.href = mailtoUrl;
+
+    setTimeout(() => { msg.style.display = 'none'; }, 6000);
   }
 
   /* ──────────────────────────────────────────
@@ -1485,7 +1615,7 @@
       counted = true;
       animateCounter(document.getElementById('stat1'), 10000, '+');
       animateCounter(document.getElementById('stat2'), 5000, '+');
-      animateCounter(document.getElementById('stat3'), 15, '+');
+      animateCounter(document.getElementById('stat3'), 5, '+');     /* fixed: was 15, now matches "5+ Years Open" in hero */
       animateCounter(document.getElementById('stat4'), 98, '%');
     }
   }, { threshold: 0.3 });
